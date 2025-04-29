@@ -1,0 +1,30 @@
+<div class="register-container">
+    <h1>Register</h1>
+    <form [formGroup]="form" (ngSubmit)="register()">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Family Name</mat-label>
+        <input matInput formControlName="familyName" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <select matNativeControl formControlName="role">
+          <option value="USER">User</option>
+          <option value="ADMINISTRATOR">Administrator</option>
+        </select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Register</button>
+    </form>
+  </div>
+  

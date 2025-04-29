@@ -1,0 +1,13 @@
+<div class="details-container" *ngIf="position; else loading">
+    <mat-card>
+      <h2>{{ position.currency }}</h2>
+      <p><strong>Price:</strong> {{ position.amount| currency }}</p>
+      <p><strong>Status:</strong> {{ position.status }}</p>
+      <p><strong>Owner:</strong> {{ position.owner }}</p>
+    </mat-card>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading position details...</p>
+  </ng-template>
+  

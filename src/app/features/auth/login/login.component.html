@@ -1,0 +1,16 @@
+<div class="login-container">
+    <h1>Login</h1>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Login</button>
+  
+      <div *ngIf="error" class="error-message">
+        Invalid username. Please try again.
+      </div>
+    </form>
+  </div>
+  

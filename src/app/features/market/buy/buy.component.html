@@ -1,0 +1,17 @@
+<div class="buy-container" *ngIf="position; else loading">
+    <mat-card>
+      <h2>Buy {{ position.currency }}</h2>
+  
+      <p><strong>Price:</strong> {{ position.amount| currency }}</p>
+      <p><strong>Status:</strong> {{ position.status }}</p>
+  
+      <button mat-raised-button color="accent" (click)="buy()" [disabled]="position.status !== 'OPEN'">
+        Confirm Purchase
+      </button>
+    </mat-card>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading position details...</p>
+  </ng-template>
+  

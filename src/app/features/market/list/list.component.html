@@ -1,0 +1,37 @@
+<div class="list-container">
+    <div class="header">
+      <h2>Market Positions</h2>
+      <button mat-raised-button color="primary" [routerLink]="['/market/sell']">
+        + Sell Cryptocurrency
+      </button>
+    </div>
+  
+    <div *ngIf="positions$ | async as positions; else noData">
+      <div class="market-list">
+        <mat-card *ngFor="let pos of positions">
+          <h3>{{ pos.currency }}</h3>
+          <p><strong>Price:</strong> {{ pos.amount| currency }}</p>
+          <p><strong>Status:</strong> {{ pos.status }}</p>
+          
+          <div class="buttons">
+            <button mat-stroked-button color="accent" (click)="buy(pos.id)" [disabled]="pos.status !== 'OPEN'">
+              Buy
+            </button>
+  
+            <button mat-stroked-button color="warn" (click)="delete(pos.id)">
+              Delete
+            </button>
+  
+            <button mat-stroked-button [routerLink]="['/market/details', pos.id]">
+              Details
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  
+    <ng-template #noData>
+      <p>No positions available.</p>
+    </ng-template>
+  </div>
+  

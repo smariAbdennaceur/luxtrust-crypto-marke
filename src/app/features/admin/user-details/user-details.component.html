@@ -1,0 +1,14 @@
+<div class="user-details-container" *ngIf="user; else noUser">
+    <mat-card>
+      <h2>User Details</h2>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>First Name:</strong> {{ user.firstName }}</p>
+      <p><strong>Family Name:</strong> {{ user.familyName }}</p>
+      <p><strong>Role:</strong> {{ user.role }}</p>
+    </mat-card>
+  </div>
+  
+  <ng-template #noUser>
+    <p class="error-message">User not found or access denied.</p>
+  </ng-template>
+  

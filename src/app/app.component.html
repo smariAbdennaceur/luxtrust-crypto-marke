@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <span>LuxTrust Crypto Market</span>
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="user$ | async as user; else guestLinks">
+    <span>Bienvenue {{ user.firstName }} {{ user.familyName }}</span>
+
+    <a mat-button routerLink="/market">Market</a>
+
+   
+    <ng-container *ngIf="isAdmin(user)">
+      <a mat-button routerLink="/admin/user/{{ user.username }}">Admin Panel</a>
+    </ng-container>
+
+    <button mat-button (click)="logout()">Logout</button>
+  </ng-container>
+
+  <ng-template #guestLinks>
+    <a mat-button routerLink="/login">Login</a>
+    <a mat-button routerLink="/register">Register</a>
+  </ng-template>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
